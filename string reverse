@@ -1,0 +1,38 @@
+Reverse a string in C++
+************************/
+#include <stdio.h>
+#include <iostream>
+
+using namespace std;
+
+void reverse(string &s)
+{
+    int len = s.length()-1;
+    int i = 0;
+    char temp;
+    while(i<len)
+    {
+        temp = s[i];
+        s[i] = s[len];
+        s[len] = temp;
+        i++;
+        len--;
+    }
+    
+}
+
+int main()
+{
+    string s = "reverse me";
+    cout<<s<<endl;
+    reverse(s);
+    cout<<s<<endl;
+    reverse(s);
+    cout<<s<<endl;
+}
+
+/* OUTPUT
+reverse me
+em esrever
+reverse me
+*/
