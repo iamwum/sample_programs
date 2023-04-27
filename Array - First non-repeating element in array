@@ -1,0 +1,51 @@
+/*
+Find first non-repeating element in a given Array of integers
+*******************************************************************************/
+//SOLUTION 1 USING C++ STL MAPS
+
+#include <stdio.h>
+#include <iostream>
+#include <map>
+
+using namespace std;
+
+int main()
+{
+    int a[] = {-1,4,-1,2,3};
+    int n = sizeof(a)/sizeof(int);
+ 
+    map<int, int> m;
+    for ( int i= 0; i<n ; i++)
+    {
+        if( m.find(a[i]) == m.end())
+            m.insert({a[i],1});
+        else
+            m[a[i]]++;
+    }
+    for(auto it=m.begin(); it!= m.end(); it++)
+        cout<<it->first <<" "<<it->second<<endl;
+    
+    /*    
+    for(auto it=m.begin(); it!= m.end(); it++)
+    {
+        if( (it->second) == 1)
+        {
+          cout<<"first non-repeat element = "<<it->first<<endl;
+          return 0;
+        }
+        
+    }
+    */
+    auto it1 = m.begin();
+    for ( int i= 0; i<n ; i++)
+    {
+         if( ((it1=m.find(a[i])) != m.end() ) && (it1->second == 1) )
+         {
+            cout<<"first non-repeat element = "<<it1->first<<endl;
+            return 0;
+         }
+    }
+}
+/***************************************/
+
+//SOLUTION 2
