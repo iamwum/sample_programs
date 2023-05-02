@@ -1,0 +1,82 @@
+/******************************************************************************
+Linked List - Detect_Remove loop
+
+*******************************************************************************/
+#include <iostream>
+
+using namespace std;
+
+struct node
+{
+    int data;
+    struct node* next;
+};
+
+void insert(int value, struct node **head)
+{
+    struct node* temp = new (struct node);
+    temp->data = value;
+    if(temp == NULL)
+        return;
+        
+    if(*head == NULL)
+        *head = temp;
+    else
+    {
+        struct node* n1 = *head;
+        while(n1->next)
+        {
+            n1 = n1->next;
+        }
+        n1->next = temp;
+    }
+    
+    if( value == 4 )  //create loop
+        temp->next = *head;
+    
+}
+
+void display(struct node **head)
+{
+    struct node *temp = *head;
+    while( temp )
+    {
+        cout<<temp->data<<endl;
+        temp = temp->next;
+    }
+    
+}
+
+void removeloop(struct node **head)
+{
+    struct node *slow = *head;
+    struct node *fast = *head;
+    while(slow && fast && fast->next)
+    {
+        if(slow == fast)
+        {
+            cout<<"loop detected at "<<slow->data<<endl;
+            *head = fast->next;
+            slow->next = NULL;
+            break;
+        }
+        slow = slow->next;
+        fast = fast->next->next;
+    }
+    
+}
+
+int main()
+{
+    struct node* head;
+    
+    for(int i=1;i <5; i++)
+     insert(i, &head);
+    
+    //display(&head);
+    
+    removeloop(&head);
+    display(&head);
+    
+    
+}
