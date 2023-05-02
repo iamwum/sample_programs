@@ -1,0 +1,29 @@
+/******************************************************************************
+General - Reverse a number
+
+*******************************************************************************/
+#include <iostream>
+
+using namespace std;
+
+int main()
+{
+    int value = 123;
+    int num = value;
+    int rev = 0;
+    while(num)
+    {
+        int rem = num%10;
+        rev = (rev * 10) + rem;
+        num = num/10;
+    }
+    cout<<value<<endl;
+    cout<<rev;
+    
+    
+}
+
+
+//OUTPUT
+//123
+//321
