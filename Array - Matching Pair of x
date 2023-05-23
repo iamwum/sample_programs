@@ -47,3 +47,9 @@ int main()
 
     return 0;
 }
+
+/* OUTPUT
+set pairs with sum 8 = 3 5
+set pairs with sum 8 = 1 7
+set pairs with sum 8 = 4 4
+*/
