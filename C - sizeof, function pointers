@@ -1,0 +1,38 @@
+/******************************************************************************
+1. custom sizeof 
+2. function pointers
+
+*******************************************************************************/
+#include <iostream>
+
+using namespace std;
+
+#define customsize(x) (char*)(&x+1) - (char*)&x
+
+void add(int a, int b)
+{
+    cout<<"add\n";
+}
+
+void sub(int a, int b)
+{
+    cout<<"sub\n";
+}
+
+
+int main()
+{
+   int a;
+   int size = customsize(a);   //4
+   cout<<"size = "<<size<<endl;
+   
+   //void (*addfp)(int,int) = add;
+   //addfp(1,2);
+   
+   //array of function pointers
+   void (*fp[])(int,int) = {add,sub}; 
+   fp[0](1,2);
+   fp[1](2,3);
+ }
+
+
